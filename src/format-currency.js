@@ -10,6 +10,8 @@ var Currency = currency || (function(){
         separator = options.separator || '.',
         delimiter = options.delimiter || ',',
         format    = options.format    || '%u%n',
+        numberStr,
+        numberFormatted,
         negativeFormat = options.negativeFormat || '-%u%n';
 
     // "clean up" number
@@ -26,9 +28,9 @@ var Currency = currency || (function(){
     }
 
     // 'separate' the cents
-    var numberStr = parseFloat(number).toFixed(precision).toString();
+    numberStr = parseFloat(number).toFixed(precision).toString();
     // this returns the cents
-    var numberFormatted = new Array(numberStr.slice(-1*precision));  
+    numberFormatted = new Array(numberStr.slice(-1*precision));  
     // add the separator
     numberFormatted.unshift(separator); 
     // this removes the decimal and cents
